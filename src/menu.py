@@ -137,7 +137,7 @@ class Menu:
     self.cls()
     while True:
       try:
-        if len(self.competitor_list) == 0:
+        if len(self.competitor_list.get_competitors()) == 0:
           raise MissingFileSelection 
         DataHandler().print_table('Lista de Competidores', self.competitor_list.get_competitors_data())
       except (MissingFileSelection) as e:
@@ -155,7 +155,7 @@ class Menu:
     self.cls()
     while True:
       try:
-        if len(self.competitor_list) == 0:
+        if len(self.competitor_list.get_competitors()) == 0:
           raise MissingFileSelection 
         print("\n Cantidad total de competidores\n")
         print(
@@ -176,7 +176,7 @@ class Menu:
     self.cls()
     while True:
       try:
-        if len(self.competitor_list) == 0:
+        if len(self.competitor_list.get_competitors()) == 0:
           raise MissingFileSelection 
         format_text = "{:<10}" * 3
         juniors, seniors, masters = DataHandler().get_competitors_age_group(self.competitor_list.get_competitors())
@@ -200,7 +200,7 @@ class Menu:
     self.cls()
     while True:
       try:
-        if len(self.competitor_list) == 0:
+        if len(self.competitor_list.get_competitors()) == 0:
           raise MissingFileSelection 
         format_text = "{:<10}" * 3
         male, female = DataHandler().get_competitors_gender_group(self.competitor_list.get_competitors())
@@ -225,7 +225,7 @@ class Menu:
     self.cls()
     while True:
       try:
-        if len(self.competitor_list) == 0:
+        if len(self.competitor_list.get_competitors()) == 0:
           raise MissingFileSelection 
         remappedJuniors = [] 
         remappedSeniors = [] 
@@ -255,7 +255,7 @@ class Menu:
     self.cls()
     while True:
       try:
-        if len(self.competitor_list) == 0:
+        if len(self.competitor_list.get_competitors()) == 0:
           raise MissingFileSelection 
         remappedMales = [] 
         remappedFemales = [] 
@@ -287,7 +287,7 @@ class Menu:
     self.cls()
     while True:
       try:
-        if len(self.competitor_list) == 0:
+        if len(self.competitor_list.get_competitors()) == 0:
           raise MissingFileSelection 
         juniors, seniors, masters = DataHandler().get_competitors_age_group(self.competitor_list.get_competitors())
         by_gender_age = map(
@@ -309,7 +309,7 @@ class Menu:
     self.cls()
     while True:
       try:
-        if len(self.competitor_list) == 0:
+        if len(self.competitor_list.get_competitors()) == 0:
           raise MissingFileSelection 
         winner = DataHandler().get_winner(self.competitor_list.get_competitors_data())
         print("\n Ganador General \n")
@@ -331,7 +331,7 @@ class Menu:
     self.cls()
     while True:
       try:
-        if len(self.competitor_list) == 0:
+        if len(self.competitor_list.get_competitors()) == 0:
           raise MissingFileSelection 
         juniors, seniors, masters = DataHandler().get_competitors_age_group(self.competitor_list.get_competitors())
 
