@@ -1,5 +1,5 @@
 #Main function
-from Views.menu import Menu
+from menu import Menu
 
 Menu().run()
 

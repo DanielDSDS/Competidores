@@ -1,32 +1,35 @@
 # Clase utilizada para la lectura y manejo de archivos  
-import Competitor
-import Competitors
+from io import open
+from .competitor import Competitor
+from .competitors import Competitors
 
 class FileHandler: 
 
-  def __init__(self, route):
-    self.route = route
+  """
+  Clase FileHandler 
 
-  def generate_competitors_list():
-    competitor_file = open(self.route, 'r') 
-    file_lines = []
-    competitor_list = []
-    competitors = Competitors()
+  Se encarga de la carga de archivos y el parsing de la data obtenida
+  """
+  def __init__(self, file_name):
+    self.file_name = file_name 
 
-    for file_lines in competitor_file:
-      file_lines.append(file_lines[:len(file_lines)-1])
+  """
+  generate_competitors_list 
+  
+  Se encarga de obtener la ruta del archivo, separarlo en lineas
+  y convertir esas lineas en una lista de competidores 
+  """
+  def generate_competitors_list(self, DataHandler):
+    try:
+      competitor_file = open(f"resources/{self.file_name}.txt", 'r') 
 
-    competitor_file.close()
+      lines = competitor_file.readlines()
+      competitor_file.close()
 
-    if(len(file_lines) > 0):
-      for competitor_text in file_lines:
-        competitor_list.append(competitor_text.split(','))
+      if(len(lines) > 0):
+        competitors_list = DataHandler().format_competitors(lines, Competitor, Competitors)
 
-      for competitor in competitor_list 
-        #competitors.append_competitor(Competitor(competitor[0],competitor[1],competitor[2],competitor[3],competitor[4],competitor[5],competitor[6],competitor[7],competitor[8],competitor[9],competitor[10]))
-        print(competitor)
-
-      return competitors 
-    else:
-      return 0 
+        return competitors_list 
+    except FileNotFoundError:
+      print('El archivo indicado no existe en "resources" ')
 
